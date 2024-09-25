@@ -13,13 +13,13 @@ async function refresh(){
         commands.push(command.command.data.toJSON());
     }
 
-    const rest = new REST({ version: '10' }).setToken(process.env.BETATOKEN);
+    const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
     
     try{
         console.log(`Refreshing ${commands.length} applications (/) commands.`);
 
         const data = await rest.put(
-            Routes.applicationCommands(process.env.BETAAPPID),
+            Routes.applicationCommands(process.env.APPID),
             { body: commands }
         );
 
